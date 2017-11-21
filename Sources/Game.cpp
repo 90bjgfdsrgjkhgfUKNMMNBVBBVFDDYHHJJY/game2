@@ -84,8 +84,12 @@ void Update()
     FillRect(targetRect, Color::red);
 
     // スコアの描画
+<<<<<<< HEAD
     SetFont("nicoca_v1.ttf", 20.0f);
 <<<<<<< HEAD
+=======
+    SetFont("nicoca_v1.ttf", 40.0f);//(E HW16A108相馬)
+>>>>>>> 197d4d738149954422bfa7dc5fd441d30a75344a
     DrawText(FormatString("%02d", score), Vector2(-319, 199), Color::black);
     DrawText(FormatString("%02d", score), Vector2(-320, 200), Color::white);
     
