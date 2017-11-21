@@ -39,6 +39,13 @@ void Update()
         
     }
 
+    void PlaySE();   //(H)中西
+    
+    if(Input::GetKeyDown(KeyMask::Space)) {
+        PlayBGM("se_maoudamashii_explosion03.mp3");
+    }
+    
+    
     // 弾の移動
     if (bulletPos.x > -999) {
         bulletPos.x += 150 * Time::deltaTime;
@@ -60,6 +67,8 @@ void Update()
 
     // 雲の描画
     DrawImage("cloud1.png", cloudPos);
+    cloudPos.x += 50 * Time::deltaTime;       //B:雲を左から右に移動(HW16A113 多田 亮太)
+    if(cloudPos.x > 330) cloudPos.x = -510;   //B:雲が一番右に行ったら一番左に戻す(HW16A113 多田 亮太)
 
     // 弾の描画
     if (bulletPos.x > -999) {
@@ -69,6 +78,7 @@ void Update()
     // 砲台の描画
     FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
     DrawImage("cannon.png", cannonPos);
+    
 
     // ターゲットの描画
     FillRect(targetRect, Color::red);
@@ -77,5 +87,21 @@ void Update()
     SetFont("nicoca_v1.ttf", 20.0f);
     DrawText(FormatString("%02d", score), Vector2(-319, 199), Color::black);
     DrawText(FormatString("%02d", score), Vector2(-320, 200), Color::white);
+    
+    
+    //プレイヤーの移動
+    float cannonSpeed = 100.0f;
+    
+    if (Input::GetKey(KeyMask::DownArrow)) {
+        cannonPos.y -= cannonSpeed * Time::deltaTime;
+    }
+    if (Input::GetKey(KeyMask::UpArrow)) {
+        cannonPos.y += cannonSpeed * Time::deltaTime;
+    }
+    
+    if (cannonPos.y < -145) {
+        cannonPos.y = -145;
+    } else if (cannonPos.y > -75) {
+        cannonPos.y = -75;
+    }
 }
-
