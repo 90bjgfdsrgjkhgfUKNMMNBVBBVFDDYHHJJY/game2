@@ -24,8 +24,8 @@ void Start()
 {
     PlayBGM("bgm_maoudamashii_8bit07.mp3");  //(G)中西
     cloudPos = Vector2(-320, 100);
-    cannonPos = Vector2(-80, -150);
-    targetRect = Rect(80, -140, 40, 40);
+    cannonPos = Vector2(-310, -150);       //A:砲台の位置を画面左に(HW16A113 多田 亮太)
+    targetRect = Rect(280, -140, 40, 40);  //A:ターゲットを画面右に(HW16A113 多田 亮太)
     bulletPos.x = -999;
     score = 0;
 }
