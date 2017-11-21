@@ -54,6 +54,8 @@ void Update()
 
     // 雲の描画
     DrawImage("cloud1.png", cloudPos);
+    cloudPos.x += 50 * Time::deltaTime;       //B:雲を左から右に移動(HW16A113 多田 亮太)
+    if(cloudPos.x > 330) cloudPos.x = -510;   //B:雲が一番右に行ったら一番左に戻す(HW16A113 多田 亮太)
 
     // 弾の描画
     if (bulletPos.x > -999) {
