@@ -72,6 +72,7 @@ void Update()
     // 砲台の描画
     FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
     DrawImage("cannon.png", cannonPos);
+    
 
     // ターゲットの描画
     FillRect(targetRect, Color::red);
@@ -80,5 +81,21 @@ void Update()
     SetFont("nicoca_v1.ttf", 20.0f);
     DrawText(FormatString("%02d", score), Vector2(-319, 199), Color::black);
     DrawText(FormatString("%02d", score), Vector2(-320, 200), Color::white);
+    
+    
+    //プレイヤーの移動
+    float cannonSpeed = 100.0f;
+    
+    if (Input::GetKey(KeyMask::DownArrow)) {
+        cannonPos.y -= cannonSpeed * Time::deltaTime;
+    }
+    if (Input::GetKey(KeyMask::UpArrow)) {
+        cannonPos.y += cannonSpeed * Time::deltaTime;
+    }
+    
+    if (cannonPos.y < -145) {
+        cannonPos.y = -145;
+    } else if (cannonPos.y > -75) {
+        cannonPos.y = -75;
+    }
 }
-
